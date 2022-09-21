@@ -4,15 +4,190 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    tools:context=".ui.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/ivRefresh"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="10dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/refresh"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <View
+        android:id="@+id/viewLine"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/ivRefresh" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/pg_topBorder"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginRight="10dp"
+        android:progress="0"
+        app:indicatorColor="@android:color/darker_gray"
+        app:indicatorInset="30dp"
+        app:indicatorSize="140dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewLine"
+        app:layout_constraintVertical_bias="0.307"
+        app:trackColor="@android:color/darker_gray"
+        app:trackThickness="2dp"
+        tools:max="100"
+        tools:progress="0" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/pg_energyLevel"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_margin="20dp"
+        android:progress="10"
+        app:indicatorColor="#287CF6"
+        app:indicatorDirectionCircular="clockwise"
+        app:indicatorInset="20dp"
+        app:indicatorSize="130dp"
+        app:layout_constraintBottom_toBottomOf="@id/pg_topBorder"
+        app:layout_constraintEnd_toEndOf="@id/pg_topBorder"
+        app:layout_constraintStart_toStartOf="@id/pg_topBorder"
+        app:layout_constraintTop_toTopOf="@id/pg_topBorder"
+        app:trackColor="@color/white"
+        app:trackCornerRadius="5dp"
+        app:trackThickness="4dp"
+        tools:max="100"
+        tools:progress="72" />
+
+    <TextView
+        android:id="@+id/tv_energyLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/pg_energyLevel"
+        app:layout_constraintEnd_toEndOf="@id/pg_energyLevel"
+        app:layout_constraintStart_toStartOf="@id/pg_energyLevel"
+        app:layout_constraintTop_toTopOf="@id/pg_energyLevel"
+        tools:text="72 %" />
+
+    <TextView
+        android:id="@+id/tv_batteryText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@color/black"
+        android:layout_marginBottom="15dp"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_energyLevel"
+        app:layout_constraintStart_toStartOf="@id/tv_energyLevel"
+        app:layout_constraintBottom_toTopOf="@id/tv_energyLevel"
+        android:text="@string/battery"  />
+
+    <TextView
+        android:id="@+id/tv_chargeLeftText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_energyLevel"
+        app:layout_constraintEnd_toEndOf="@+id/tv_energyLevel"
+        app:layout_constraintStart_toStartOf="@+id/tv_energyLevel"
+        android:text= "@string/charge" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/pg_topBorder2"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="4dp"
+        android:progress="0"
+        app:indicatorColor="@android:color/darker_gray"
+        app:indicatorInset="30dp"
+        app:indicatorSize="140dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewLine"
+        app:layout_constraintVertical_bias="0.307"
+        app:trackColor="@android:color/darker_gray"
+        app:trackThickness="2dp"/>
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/pg_milesLeft"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_margin="20dp"
+        android:progress="747"
+        app:indicatorColor="#287CF6"
+        app:indicatorDirectionCircular="clockwise"
+        app:indicatorInset="20dp"
+        app:indicatorSize="130dp"
+        app:layout_constraintBottom_toBottomOf="@id/pg_topBorder2"
+        app:layout_constraintEnd_toEndOf="@id/pg_topBorder2"
+        app:layout_constraintStart_toStartOf="@id/pg_topBorder2"
+        app:layout_constraintTop_toTopOf="@id/pg_topBorder2"
+        app:layout_constraintVertical_bias="0.307"
+        app:trackColor="@color/white"
+        app:trackCornerRadius="5dp"
+        app:trackThickness="4dp"
+        tools:max="1000"
+        tools:progress="747" />
+
+    <TextView
+        android:id="@+id/tv_milesLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        tools:text=" 742"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/pg_milesLeft"
+        app:layout_constraintEnd_toEndOf="@id/pg_milesLeft"
+        app:layout_constraintStart_toStartOf="@id/pg_milesLeft"
+        app:layout_constraintTop_toTopOf="@id/pg_milesLeft"
+        tools:layout_editor_absoluteX="318dp"
+        tools:layout_editor_absoluteY="378dp" />
+
+    <TextView
+        android:id="@+id/tv_monthText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@color/black"
+        android:layout_marginBottom="15dp"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_milesLeft"
+        app:layout_constraintStart_toStartOf="@id/tv_milesLeft"
+        app:layout_constraintBottom_toTopOf="@id/tv_milesLeft"
+        android:text="@string/monthly" />
+
+    <TextView
+        android:id="@+id/tv_milesLeftText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_milesLeft"
+        app:layout_constraintEnd_toEndOf="@+id/tv_milesLeft"
+        app:layout_constraintStart_toStartOf="@+id/tv_milesLeft"
+        android:text="@string/miles"  />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
